@@ -190,7 +190,7 @@ f 2 1 2 2 2 2 2 2 2 2 2 f
 . . . . . f 2 f . . . . . 
 . . . . . . f . . . . . . 
 `;
-            case "image5":return img`
+            case "image10":return img`
 . . 2 2 b b b b b . . . . . . . 
 . 2 b 4 4 4 4 4 4 b . . . . . . 
 2 2 4 4 4 4 d d 4 4 b . . . . . 
@@ -208,7 +208,7 @@ f 2 1 2 2 2 2 2 2 2 2 2 f
 . . . . . . . . . . . c 1 b c . 
 . . . . . . . . . . . . c c . . 
 `;
-            case "image6":return img`
+            case "image11":return img`
 . . 2 2 b b b b b . . . . . . . 
 . 2 b 4 4 4 4 4 4 b . . . . . . 
 2 2 4 4 4 4 d d 4 4 b . . . . . 

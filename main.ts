@@ -2,6 +2,13 @@ namespace SpriteKind {
     export const Heart = SpriteKind.create()
     export const bigboi = SpriteKind.create()
 }
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (Speech_finnished == 1) {
+        controller.moveSprite(Cherry, 200, 200)
+        pause(500)
+        controller.moveSprite(Cherry, 100, 100)
+    }
+})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     Skip += 1
 })
@@ -47,7 +54,6 @@ let projectile: Sprite = null
 let Speech_finnished = 0
 let Skip = 0
 let Cherry: Sprite = null
-let Boss_health = 3
 tiles.setTilemap(tilemap`level1`)
 Cherry = sprites.create(img`
     . . . . . . . . . . . 6 6 6 6 6 
@@ -67,8 +73,7 @@ Cherry = sprites.create(img`
     . . . . . . . . c e 2 2 2 2 c . 
     . . . . . . . . . c c c c c . . 
     `, SpriteKind.Player)
-Cherry.setPosition(26, 45)
-controller.moveSprite(Cherry)
+Cherry.setPosition(60, 87)
 let Chicken = sprites.create(img`
     ..........bbbbbb.....f..........
     .......bbb444444bb..ff..........
@@ -118,7 +123,9 @@ if (Skip == 0) {
     Chicken.say("Well you asked for it", 2000)
 }
 Speech_finnished = 1
-info.setLife(3)
+info.setLife(999999999)
+controller.moveSprite(Cherry)
+let Boss_health = 0
 forever(function () {
     if (Speech_finnished == 1) {
         if (Boss_health == 3) {
@@ -329,13 +336,31 @@ forever(function () {
     if (heath_go_brrr == 0) {
         if (Speech_finnished == 1) {
             if (Boss_health == 2) {
+                Speech_finnished = 0
                 info.changeScoreBy(100)
+                Chicken.say("I cant loose ")
                 pause(2000)
+                Chicken.say("I guess ill have to go even faster", 1500)
+                pause(2000)
+                Speech_finnished = 1
             } else if (Boss_health == 1) {
+                Speech_finnished = 0
                 info.changeScoreBy(100)
+                Chicken.say("I must keep the balance", 1500)
+                pause(2000)
+                Speech_finnished = 1
             } else if (Boss_health == 0) {
+                Speech_finnished = 0
                 info.changeScoreBy(100)
-                game.over(true, effects.splatter)
+                Chicken.say("do you have any idea what you have done", 1500)
+                pause(2000)
+                Chicken.say("i have to......", 1000)
+                pause(2000)
+                Chicken.say("may you live with this curse till the end of time", 1500)
+                pause(2000)
+                Chicken.destroy(effects.starField, 500)
+                pause(5000)
+                game.over(true, effects.melt)
             }
         }
     }
