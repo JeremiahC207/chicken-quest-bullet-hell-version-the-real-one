@@ -123,9 +123,9 @@ if (Skip == 0) {
     Chicken.say("Well you asked for it", 2000)
 }
 Speech_finnished = 1
-info.setLife(999999999)
+info.setLife(6)
 controller.moveSprite(Cherry)
-let Boss_health = 0
+let Boss_health = 3
 forever(function () {
     if (Speech_finnished == 1) {
         if (Boss_health == 3) {
